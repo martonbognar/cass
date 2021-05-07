@@ -29,7 +29,7 @@ function draw(cache, element) {
             td.id = setIndex + "-" + blockIndex;
             blockIndex++;
             block.words.forEach(word => {
-                td.innerText += word;
+                td.innerText += word + " ";
             });
             tr.append(td);
         });
