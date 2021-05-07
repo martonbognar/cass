@@ -52,7 +52,7 @@ if (user_len != secret_len)
 
 If we guess the length incorrectly, the program exits. If we guess it correctly, it continues to compare the individual characters in the password.
 
-This means, that based on the execution time, we can tell, whether we guessed the length correctly: the program will take longer to execute in that case.
+This means that based on the execution time, we can tell whether we guessed the length correctly: the program will take longer to execute in that case.
 
 ```bash
 Enter super secret password ('q' to exit): 0
@@ -273,9 +273,15 @@ The lowest 4 bits (the set index) give the result of `42 % 16 = 10`, while the u
 
 Using this method, we can place all of the addresses in the first exercise, by using the modulo operation to find the correct set. If a given address maps to a block that is already occupied, we simply replace the contained value (and in practice, we would also replace the tag to know which address the value belongs to).
 
+<input type="button" onclick="drawCache(8, 2);" value="Draw cache" />
+
+<script src="script.js"></script>
+
+<div id='cache'></div>
+
 ```
 +----+----+
-}  S |  W |
+|  S |  W |
 +----+----+
 |  0 | 48 |
 |  1 | -- |
