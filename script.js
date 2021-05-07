@@ -5,7 +5,7 @@ function construct(sets, ways, blocksize) {
         for (let w = 0; w < ways; ++w) {
             let block = { age: 0, words: [] };
             for (let w = 0; w < blocksize; ++w) {
-                block.words.push(null);
+                block.words.push("--");
             }
             set.push(block);
         }
@@ -14,8 +14,8 @@ function construct(sets, ways, blocksize) {
     return cache;
 }
 
-function draw(cache) {
-    let div = document.getElementById('cache');
+function draw(cache, element) {
+    let div = document.getElementById(element);
     div.innerHTML = '';
     let table = document.createElement('table');
     let setIndex = 0;
@@ -38,10 +38,12 @@ function draw(cache) {
     div.append(table);
 }
 
-function insertAddress(cache, address) {
+function insertAddress(cache, address, element) {
     let wordIndexSize = Math.log2(cache.blockSize);
     let setIndexSize = Math.log2(cache.setSize);
-    let addressBinary = address.toString(2);
+    console.log(address);
+    let addressBinary = address.toString(2).padStart(wordIndexSize + setIndexSize, '0');
+    console.log(addressBinary);
     let addressLength = addressBinary.length;
 
     let setIndex = -1;
@@ -88,5 +90,7 @@ function insertAddress(cache, address) {
         selectedSet[maxIndex].age = 0;
     }
 
-    draw(cache);
+    draw(cache, element);
+
+    return hit;
 }
