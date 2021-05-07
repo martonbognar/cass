@@ -57,6 +57,17 @@ function insertAddress(cache, address) {
 
     let selectedSet = cache.sets[setIndex];
 
+    let hit = false;
+    let hitIndex = -1;
+
+    for (let i = 0; i < selectedSet.length; ++i) {
+        let block = selectedSet[i];
+        if (block.words[wordIndex] == address) {
+            hit = true;
+            hitIndex = i;
+        }
+    }
+
     let maxAge = 0;
     let maxIndex = 0;
     for (let i = 0; i < selectedSet.length; ++i) {
@@ -68,10 +79,14 @@ function insertAddress(cache, address) {
         }
     }
 
-    for (let i = 0; i < selectedSet[maxIndex].words.length; ++i) {
-        selectedSet[maxIndex].words[i] = address - wordIndex + i;
+    if (hit) {
+        selectedSet[hitIndex].age = 0;
+    } else {
+        for (let i = 0; i < selectedSet[maxIndex].words.length; ++i) {
+            selectedSet[maxIndex].words[i] = address - wordIndex + i;
+        }
+        selectedSet[maxIndex].age = 0;
     }
-    selectedSet[maxIndex].age = 0;
 
     draw(cache);
 }
