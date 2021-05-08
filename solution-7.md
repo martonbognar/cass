@@ -393,11 +393,8 @@ Block size (words):
 <br>
 <input type="button" onclick="drawCache();" value="Draw cache" />
 
-<br>
-<br>
-
 Insert element (address): <input type="number" placeholder="Address" id="address" />
-
+<br>
 <input type="button" onclick="insert();" value="Go" /> <span id='hit'></span>
 
 <div id='cache'></div>
