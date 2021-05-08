@@ -259,6 +259,8 @@ For each set, we have a block size of `8 * 32` bits, and we have one valid bit a
 
 ## Exercise 4.3
 
+You can try out all of these exercises in the [cache simulator](#cache-simulator) below!
+
 Whenever we have to decide to which set a given address belongs to, it is useful to think about the address' representation in binary notation. If the block contains multiple words, the least significant bits of the address will determine the word index within the block. The following bits will determine the index of the set. The most significant bits are kept as the tag, which does not play a role in this exercise.
 
 For the direct-mapped cache with 16 1-word blocks, we do not have any word index bits, as one block only contains one word. To index 16 bits, we need the least significant `log_2(16) = 4` bits of the address. We might notice that these 4 bits of the address always equal to the result of `address % 16` , as the more significant bits represent a part of the address that is a multiple of 16.

@@ -138,6 +138,7 @@ In this code, both `add` instructions will have to be stalled for one cycle. Bot
 +-----++----+----+----+----+----+----+----+
 |  lw || IF | ID | EX | ME | WB |    |    |
 | add ||    | IF | ID |XXXX| EX | ME | WB |
++-----++----+----+----+----+----+----+----+
 ```
 
 In total, this means that we have 5 cycles for the first instruction, 6 (1 each) for completing the additional instructions, and 2 due to the two stalls. `5 + 6 + 2 = 13`
